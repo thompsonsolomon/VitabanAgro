@@ -137,12 +137,14 @@ const Home = () => {
             <div className="tetCon">
               <div className="heading">
                 <hr />
-                <h3>Wy you need us </h3>
+                <h3>Why you need us </h3>
               </div>
               <h2>
                 PROVIDING EXCEPTIONAL LANDSCAPING
               </h2>
+              <p>
               We are not talking about just any “Landscaping”, we are depicting what it means to provide exceptional agricultural landscaping in improving your business and way of life.
+              </p>
               <Link className="mt-6 px-3 py-1.5 bg-[#4caf50] text-[white] font-semibold rounded-[4px]">
                 Learn More
               </Link>

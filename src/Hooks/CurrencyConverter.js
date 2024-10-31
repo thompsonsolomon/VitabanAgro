@@ -1,68 +1,3 @@
-// import { useState } from "react";
-
-// const CurrencyConverter = () => {
-//   const [convertedAmount, setConvertedAmount] = useState(null);
-//   const [error, setError] = useState(null);
-
-//   const convertCurrency = async (amount, toCurrency) => {
-//     const apiKey = "2725d88ff3cf099d175bbf085543dc87";
-//     const exchangeRateApi = `http://apilayer.net/api/live?access_key=${apiKey}&currencies=${'NGN'}&source=${"USD"}`;
-//     try {
-//       const response = await fetch(exchangeRateApi);
-//       const data = await response.json();
-//       const exchangeRate = data.rates[toCurrency];
-
-//       if (!exchangeRate) {
-//         throw new Error(`Unable to get the exchange rate for ${toCurrency}`);
-//       }
-
-//       const calculatedAmount = amount * exchangeRate;
-//       setConvertedAmount(calculatedAmount);
-//     } catch (err) {
-//       setError(err.message);
-//       console.error(`Error fetching exchange rate: ${err.message}`);
-//     }
-//   };
-
-//   return { convertedAmount, error, convertCurrency };
-// };
-
-// export default CurrencyConverter;
-
-// // import React, { useState } from 'react';
-// // import useCurrencyConverter from './useCurrencyConverter';
-
-// // const CurrencyConverter = () => {
-// //   const [amount, setAmount] = useState(100);
-// //   const { convertedAmount, error, convertCurrency } = useCurrencyConverter();
-
-// //   const handleConvert = () => {
-// //     convertCurrency(amount, 'USD', 'NGN');
-// //   };
-
-// //   return (
-// //     <div>
-// //       <input
-// //         type="number"
-// //         value={amount}
-// //         onChange={(e) => setAmount(e.target.value)}
-// //         placeholder="Amount"
-// //       />
-// //       <button onClick={handleConvert}>Convert Currency</button>
-
-// //       {convertedAmount && (
-// //         <p>Converted Amount: {convertedAmount.toFixed(2)} NGN</p>
-// //       )}
-// //       {error && <p>Error: {error}</p>}
-// //     </div>
-// //   );
-// // };
-
-// // export default CurrencyConverter;
-
-
-
-
 
 import { useState } from 'react';
 
@@ -78,7 +13,7 @@ const useCurrencyConverter = () => {
     }
   
     const apiKey = "2725d88ff3cf099d175bbf085543dc87"; // Use environment variable
-    const exchangeRateApi = `http://apilayer.net/api/live?access_key=${apiKey}&currencies=${toCurrency}&source=${"USD"}`;
+    const exchangeRateApi = `http://apilayer.net/api/live?access_key=${apiKey}&currencies=${'NGN'}&source=${"USD"}`;
   
     try {
         const response = await fetch(exchangeRateApi);

@@ -13,7 +13,7 @@ const useCurrencyConverter = () => {
     }
   
     const apiKey = "2725d88ff3cf099d175bbf085543dc87"; // Use environment variable
-    const exchangeRateApi = `http://apilayer.net/api/live?access_key=${apiKey}&currencies=${'NGN'}&source=${"USD"}`;
+    const exchangeRateApi = `https://apilayer.net/api/live?access_key=${apiKey}&currencies=${'NGN'}&source=${"USD"}`;
   
     try {
         const response = await fetch(exchangeRateApi);

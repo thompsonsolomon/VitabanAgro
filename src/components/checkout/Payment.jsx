@@ -131,7 +131,7 @@ export default function Payment() {
               {convertedAmount && (
                 <p>Converted Amount: {convertedAmount.toFixed(2)} {selectedCurrency}</p>
               )}
-{error && <p>Error: {error}</p>}
+ <p>Enter Address and Select Currency to proceed </p>
             </div>
 
             <PaymentButton

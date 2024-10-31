@@ -5,10 +5,8 @@
 //   const [error, setError] = useState(null);
 
 //   const convertCurrency = async (amount, toCurrency) => {
-//     console.log(typeof toCurrency);
-
 //     const apiKey = "2725d88ff3cf099d175bbf085543dc87";
-//     const exchangeRateApi = `http://apilayer.net/api/live?access_key=${apiKey}&currencies=${toCurrency}&source=${"USD"}`;
+//     const exchangeRateApi = `http://apilayer.net/api/live?access_key=${apiKey}&currencies=${'NGN'}&source=${"USD"}`;
 //     try {
 //       const response = await fetch(exchangeRateApi);
 //       const data = await response.json();

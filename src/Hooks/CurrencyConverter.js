@@ -22,8 +22,8 @@ const useCurrencyConverter = () => {
         }
     
         const data = await response.json();
-        console.log(data); // Log the entire response to inspect it
-        console.log(data.quotes); // Log the quotes object
+        // console.log(data); // Log the entire response to inspect it
+        // console.log(data.quotes); // Log the quotes object
     
         // Construct the key for the quotes object
         const exchangeRateKey = `${"USD"}${toCurrency}`;

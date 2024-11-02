@@ -77,7 +77,7 @@ export default function PaymentButton({ Amount, Currency, Orders }) {
               console.log(response);
               setPlaceOrder(response)
               closePaymentModal(); // this will close the modal programmatically
-              navigate("/ordercompleted")
+              // navigate("/ordercompleted")
             },
             onClose: () => { },
           });

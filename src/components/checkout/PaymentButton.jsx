@@ -62,7 +62,7 @@ export default function PaymentButton({ Amount, Currency, Orders }) {
     console.log("success", "Order Added Successfully");
   };
 
-  if (PlaceOrder && PlaceOrder.status === "successful") {
+  if (PlaceOrder && PlaceOrder.status === "completed") {
     HandlePlaceOrder()
   }
   console.log("Orders===>" + PlaceOrder)

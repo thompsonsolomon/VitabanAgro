@@ -65,7 +65,7 @@ export default function PaymentButton({ Amount, Currency, Orders }) {
   if (PlaceOrder && PlaceOrder.status === "successful") {
     HandlePlaceOrder()
   }
-  console.log(PlaceOrder.status)
+  console.log("Orders===>" + PlaceOrder)
 
   return (
     <div className="App">

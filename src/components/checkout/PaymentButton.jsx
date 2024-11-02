@@ -74,7 +74,7 @@ export default function PaymentButton({ Amount, Currency, Orders }) {
         onClick={() => {
           handleFlutterPayment({
             callback: (response) => {
-              // console.log(response);
+              console.log(response);
               setPlaceOrder(response)
               closePaymentModal(); // this will close the modal programmatically
               navigate("/ordercompleted")

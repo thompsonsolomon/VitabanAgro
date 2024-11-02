@@ -36,7 +36,7 @@ export default function PaymentButton({ Amount, Currency, Orders }) {
   const navigate = useNavigate()
 
   const [PlaceOrder, setPlaceOrder] = useState()
-  console.log(Orders)
+  console.log("Orders_from_payment_button_container " + Orders)
   const Address = Orders.Address
   const cover = Orders.cover
   const amount = Orders.amount
@@ -65,6 +65,7 @@ export default function PaymentButton({ Amount, Currency, Orders }) {
   if (PlaceOrder && PlaceOrder.status === "successful") {
     HandlePlaceOrder()
   }
+  console.log(PlaceOrder.status)
 
   return (
     <div className="App">

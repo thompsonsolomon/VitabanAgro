@@ -16,6 +16,7 @@ export default function Payment() {
   const navigate = useNavigate()
 
 
+  console.log(typeof cartItems)
   let total = 0;
   itemLists.forEach((item) => {
     total += item.totalPrice;

@@ -36,7 +36,7 @@ export default function PaymentButton({ Amount, Currency, Orders }) {
   const navigate = useNavigate()
 
   const [PlaceOrder, setPlaceOrder] = useState()
-  console.log(Orders)
+  console.log("Orders_from_payment_button_container " + Orders)
   const Address = Orders.Address
   const cover = Orders.cover
   const amount = Orders.amount
@@ -56,6 +56,7 @@ export default function PaymentButton({ Amount, Currency, Orders }) {
       await addDoc(collection(db, "orders"), {
         Address, cover, amount, quantity, ToTal_Amount, id, time, isDelivered, Others, buyerId
       });
+      console.log("Successfull")
       navigate("/ordercompleted")
     } catch (error) {
       console.log("error", error.message);
@@ -63,9 +64,10 @@ export default function PaymentButton({ Amount, Currency, Orders }) {
     console.log("success", "Order Added Successfully");
   };
 
-  if (PlaceOrder && PlaceOrder.status === "successful") {
-    HandlePlaceOrder()
-  }
+  // if (PlaceOrder && PlaceOrder.status === "completed") {
+  //   HandlePlaceOrder()
+  // }
+  console.log("Orders===>" + PlaceOrder)
 
   return (
     <div className="App">
@@ -75,10 +77,11 @@ export default function PaymentButton({ Amount, Currency, Orders }) {
         onClick={() => {
           handleFlutterPayment({
             callback: (response) => {
-              // console.log(response);
+              HandlePlaceOrder()
+              console.log(response);
               setPlaceOrder(response)
               closePaymentModal(); // this will close the modal programmatically
-              navigate("/ordercompleted")
+              // navigate("/ordercompleted")
             },
             onClose: () => { },
           });

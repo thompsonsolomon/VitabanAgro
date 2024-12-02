@@ -73,8 +73,8 @@ const Aboutus = () => {
                         <img src={Team3} alt="ceo" />
                       </div>
                       <div className="tetcon">
-                        <span>Vitalis Evan</span> <br />
-                        <small><b>Chairman/CEO</b></small>
+                        <span className="text-gray-900" >Vitalis Evan</span> <br />
+                        <small><b className="text-gray-900">Chairman/CEO</b></small>
                       </div>
                     </div>
 
@@ -84,8 +84,8 @@ const Aboutus = () => {
                           <img src={Team1} alt="" />
                         </div>
                         <div className="teamtetcon">
-                          <span>Felix Israel</span> <br />
-                          <small><b>Managing Director</b></small>
+                          <span className="text-gray-900">Felix Israel</span> <br />
+                          <small><b className="text-gray-900" >Managing Director</b></small>
                         </div>
                       </div>
                       <div className="teamCard">
@@ -93,8 +93,8 @@ const Aboutus = () => {
                           <img src={Team2} alt="" />
                         </div>
                         <div className="teamtetcon">
-                          <span>Uwakwe Theresa</span> <br />
-                          <small><b>Secretary/PRO</b></small>
+                          <span className="text-gray-900" >Uwakwe Theresa</span> <br />
+                          <small><b className="text-gray-900" >Secretary/PRO</b></small>
                         </div>
                       </div>
                       <div className="teamCard">
@@ -102,8 +102,8 @@ const Aboutus = () => {
                           <img src={Team4} alt="" />
                         </div>
                         <div className="teamtetcon">
-                          <span>John Elvis Nwanneka</span> <br />
-                          <small><b>Sales Manager</b></small>
+                          <span className="text-gray-900" >John Elvis Nwanneka</span> <br />
+                          <small><b className="text-gray-900">Sales Manager</b></small>
                         </div>
                       </div>
                     </div>

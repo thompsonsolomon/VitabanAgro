@@ -58,8 +58,8 @@ const AdminOrders = () => {
                                     Status:{" "}
                                     <span
                                         className={`font-semibold ${order.status === true
-                                            ? "text-green-500"
-                                            : "text-red-500"
+                                            ? "text-red-500"
+                                            : "text-green-500"
                                             }`}
                                     >
                                         {order.status == true ? "Delivered" : "Not Delivered"}

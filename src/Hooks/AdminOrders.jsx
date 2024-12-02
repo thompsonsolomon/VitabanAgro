@@ -58,8 +58,8 @@ const AdminOrders = () => {
                                     Status:{" "}
                                     <span
                                         className={`font-semibold ${order.status === true
-                                            ? "text-red-500"
-                                            : "text-green-500"
+                                            ? "text-green-500"
+                                            : "text-red-500"
                                             }`}
                                     >
                                         {order.status == true ? "Delivered" : "Not Delivered"}
@@ -67,7 +67,7 @@ const AdminOrders = () => {
                                 </p>
                             </div>
                             <button
-                                className={`py-2 px-4 rounded-md text-white ${order.status === true ? "bg-red-500" : "bg-green-500"
+                                className={`py-2 px-4 rounded-md text-white ${order.status === true ? "bg-green-500" : "bg-red-500"
                                     }`}
                                 onClick={() => toggleStatus(order.id, order.status)}
                             >

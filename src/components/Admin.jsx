@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AdminHomePage from "../Hooks/AdminHOme";
+import AdminHomePage from "../Hooks/AdminHome";
 import AdminOrders from "../Hooks/AdminOrders";
 import ManageProducts from "../Hooks/AdminAddProduct";
 import AdminSetting from "../Hooks/AdminSetting";

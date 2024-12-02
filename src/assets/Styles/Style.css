@@ -18,10 +18,10 @@
     }
 
     .WhatWEDoContainer{
-        flex-direction: column;
+      flex-direction: column-reverse;
     }
     .invest{
-        flex-direction: column-reverse;
+      flex-direction: column;
     }
 }
 
@@ -119,7 +119,7 @@
 }
 
 .WhatWEDoContainer .tetCon h3 {
-  font-size: 10px;
+  font-size: 14px;
   color: #666;
 }
 .WhatWEDoContainer .tetCon h2 {

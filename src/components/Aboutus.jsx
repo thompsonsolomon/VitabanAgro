@@ -5,7 +5,7 @@ import { Team1, Team2, Team3, Team4 } from "../assets/images";
 const Aboutus = () => {
   return (
     <div>
-      <div className="relative  h-[60vh]">
+      <div className="relative  AboutusHeader h-[100vh]">
         <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
         <div
           className="absolute inset-0 bg-center bg-cover z-0"

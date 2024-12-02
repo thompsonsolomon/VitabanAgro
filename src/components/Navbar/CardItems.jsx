@@ -46,7 +46,7 @@ const CardItems = ({
           <div>
             <p>{name}</p>
             <label className=" text-xs" htmlFor="">
-              Unit Price: ${price}
+              Unit Price: {price}
             </label>
           </div>
           <div className="">
@@ -59,7 +59,7 @@ const CardItems = ({
                 <AiOutlineMinus />
               </button>
             </div>
-            <div> Total-item: ${Math.round(`${totalPrice}`)}</div>
+            <div> Total-item: {Math.round(`${totalPrice}`)}</div>
           </div>
         </div>
       </div>

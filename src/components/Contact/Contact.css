@@ -1,0 +1,110 @@
+/* :: 22.0 Contact Area CSS */
+.contact-content-area {
+    position: relative;
+    padding: 30px;
+    box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.15);
+    top: -100px;
+    background-color: #ffffff;
+}
+
+.contact-content-area .contact-content {
+    position: relative;
+    text-align: center;
+}
+
+.Location::-webkit-scrollbar{
+    display: none !important;
+}
+@media only screen and (max-width: 767px) {
+    .contact-content-area .contact-content {
+        margin-bottom: 50px;
+    }
+}
+
+.contact-content-area .contact-content h4 {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .contact-content-area .contact-content h4 {
+        font-size: 18px;
+    }
+}
+
+.contact-content-area .contact-content p {
+    color: #636363;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .contact-content-area .contact-content p {
+        font-size: 12px;
+    }
+}
+
+.contact-content-area .contact-content p:last-child {
+    margin-bottom: 0;
+}
+
+.contact-content-area .contact-content::after {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: #d2d2d5;
+    content: '';
+    right: -15px;
+    top: 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .contact-content-area .contact-content::after {
+        display: none;
+    }
+}
+
+.contact-content-area .col-12:last-child .contact-content::after {
+    display: none;
+}
+
+.contact-content-area .col-12:last-child .contact-content:last-child {
+    margin-bottom: 0;
+}
+
+.contact-form-area label {
+    font-size: 16px;
+    color: #636363;
+}
+
+.contact-form-area .form-control {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    font-size: 16px !important;
+    font-weight: 500;
+    margin-bottom: 30px;
+    border: 1px solid #ebebeb;
+    border-radius: 2px;
+    padding: 15px 30px;
+    color: rgb(90, 84, 84);
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+}
+
+.contact-form-area .form-control:focus {
+    box-shadow: none;
+    border-color: rgb(44, 2, 44);
+}
+
+.contact-form-area textarea.form-control {
+    height: 150px;
+}
+.contact-form-area .form-control::placeholder{
+    color: #bbbbbb;
+}
+.formCon{
+    margin: 0px !important;
+    margin-left: 10px !important;
+}

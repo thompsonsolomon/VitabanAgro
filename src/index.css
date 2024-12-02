@@ -13,7 +13,9 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-
+input,textarea{
+  outline: none !important;
+}
 .TeamImageAllCon {
   display: flex;
   justify-content: center;
@@ -83,4 +85,54 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+}
+.CartType {
+  margin: 10px 0px;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 50px;
+  width: fit-content;
+  padding: 0px 18px;
+  /* background-color: red; */
+  border-radius: 10px;
+  color: black;
+  letter-spacing: 1px;
+  font-weight: 700;
+  background: rgb(245, 245, 245);
+}
+@media (max-width: 768px) {
+  .CartType {
+    width: 90%;
+    font-size: 14px;
+  }
+}
+
+
+@media print {
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  /* Hide the print button during printing */
+  .react-to-print {
+    display: none;
+  }
+}
+
+.ProfileInput{
+  outline: none;
+  background-color: white;
+  color: #666;
+}
+.ProfileInput::placeholder{
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
 }

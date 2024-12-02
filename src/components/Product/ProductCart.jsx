@@ -4,16 +4,17 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { cartActions } from "../../redux/slice";
 import { Link } from "react-router-dom";
+// import { AddToCart } from "../../Hooks/HandleAddToCart";
 
 const ProductCart = ({ key, id, name, price, cover }) => {
   const dispatch = useDispatch();
   const addToCart = () => {
     dispatch(cartActions.addToCart({ id, name, price, cover }));
     toast.success("added");
+    // AddToCart({ id, name, price, cover })
   };
 
-  console.log(id);
-  
+
   return (
     <div
       className="bg-white md:h-auto xd:h-auto p-4 rounded-lg  
@@ -36,7 +37,7 @@ const ProductCart = ({ key, id, name, price, cover }) => {
         </Link>
         <div className="text-black text-sm flex flex-col  w-full mt-4">
           <p className="text-xs md:text-base">{name}</p>
-          <p>${price}</p>
+          <p>Amount: {price}</p>
         </div>
         <div className="w-full mt-4">
           <button

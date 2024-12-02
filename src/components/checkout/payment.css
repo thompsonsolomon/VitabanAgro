@@ -1,6 +1,7 @@
 .payment {
-  margin-top: 90px;
+  margin: 90px 25px;
   color: black;
+  background-color: white;
 }
 .paymentContainer h1 {
   text-align: center;
@@ -12,9 +13,11 @@
 }
 .paymentSection {
   display: flex;
-  padding: 20px;
-  margin: 0 20px;
+  flex-direction: column;
+  width: 100%;
+  
   border-bottom: 1px solid lightgray;
+
 }
 @media (max-width: 600px) {
   .paymentSection {
@@ -61,4 +64,10 @@
 
 .paymentDetails button:disabled {
   opacity: 0.7;
+}
+
+@media (max-width:768px) {
+  .checkoutPageContainer{
+    flex-direction: column-reverse;
+  }
 }

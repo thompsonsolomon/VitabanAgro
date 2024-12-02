@@ -1,0 +1,186 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { useUser } from '../Context/userContext';
+import { collection, onSnapshot, query } from 'firebase/firestore';
+import { db } from '../assets/data/firebase';
+import OrderTable from '../Hooks/OrderTable';
+import ReactToPrint from 'react-to-print';
+
+const OrdersPage = () => {
+  const { currentUser } = useUser();
+  const [AllData, setAllData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Store a separate ref for each order
+  const refs = useRef({});
+
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   const q = query(collection(db, 'orders'));
+  //   const unsub = onSnapshot(q, (querySnapshot) => {
+  //     const StreamArray = [];
+  //     querySnapshot.forEach((doc) => {
+  //       StreamArray.push({ ...doc.data(), id: doc.id });
+  //     });
+  //     setAllData(StreamArray);
+  //     setIsLoading(false);
+  //   });
+  //   return () => unsub();
+  // }, []);
+
+  // const orders = AllData.filter((order) => order.buyerId === currentUser.uid);
+
+  const orders = [{
+    id: 0,
+    name: "WOOD CHARCOAL",
+    amount: 9.0,
+    quantity: 1,
+    category: "farm",
+    Address: "test",
+    cover: "https://671f70e8354d4a00cfe2ed4e--vitabanagro.netlify.app/assets/product3-5e438662.jpg",
+    ToTal_Amount: 9.0,
+    desc: "We supply sustainably Sourced Timber, wood charcoal is a versatile and valuable fuel source that is valued for its high heat output, long burn time, and absorbent properties. Whether used for cooking, heating, or industrial purposes, charcoal is an important part of many cultures and industries around the world. When using wood charcoal, be sure to choose high-quality charcoal and use it in a safe and responsible manner.",
+  },
+  {
+    id: 1,
+    name: "WOOD CHARCOAL",
+    amount: 9.0,
+    quantity: 1,
+    category: "farm",
+    Address: "test",
+    cover: "https://671f70e8354d4a00cfe2ed4e--vitabanagro.netlify.app/assets/product3-5e438662.jpg",
+    ToTal_Amount:9.0 ,
+    desc: "We supply sustainably Sourced Timber, wood charcoal is a versatile and valuable fuel source that is valued for its high heat output, long burn time, and absorbent properties. Whether used for cooking, heating, or industrial purposes, charcoal is an important part of many cultures and industries around the world. When using wood charcoal, be sure to choose high-quality charcoal and use it in a safe and responsible manner.",
+  },
+  ]
+  return (
+    <div className="container mx-auto mt-20 p-4">
+      <h1 className="text-2xl font-bold mb-6 text-center">My Orders</h1>
+
+      {isLoading && <div className="text-center text-lg">Loading...</div>}
+
+      {orders && orders.length > 0 ? (
+        orders.map((order) => {
+          // Create or retrieve a ref for this specific order
+          if (!refs.current[order.id]) {
+            refs.current[order.id] = React.createRef();
+          }
+          return (
+            <div key={order.id} className="mb-8 bg-white shadow-md rounded-lg p-6">
+              <OrderTable ref={refs.current[order.id]} order={order} />
+
+              {/* <ReactToPrint
+                trigger={() => (
+                  <button className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                    Print Order
+                  </button>
+                )}
+                content={() => componentRef.current} // Use the ref of the table to print
+              />
+               */}
+            </div>
+          );
+        })
+      ) : (
+        <div className="text-center text-lg">No orders found.</div>
+      )}
+    </div>
+  );
+};
+
+export default OrdersPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, { useRef } from 'react';
+import ReactToPdf from 'react-to-pdf';
+
+const OrderTable = ({ order }) => {
+  const tableRef = useRef();
+
+  return (
+    <div ref={tableRef} className="bg-white shadow-md rounded-lg p-6">
+      <div className="mb-4">
+        <h2 className="text-lg font-bold">Order #{order.id}</h2>
+        <p><strong>Date:</strong> {order.time}</p>
+        <p><strong>Status:</strong> {order.isDelivered ? " Delivered " : "Not Delivered"}</p>
+      </div>
+
+      {/* Order table */}
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white border border-gray-200">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="py-2 px-4 border-b">Product</th>
+              <th className="py-2 px-4 border-b">Address</th>
+              <th className="py-2 px-4 border-b">Price</th>
+              <th className="py-2 px-4 border-b">Quantity</th>
+              <th className="py-2 px-4 border-b">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-b">
+              <td className="py-2 px-4 flex items-center space-x-4">
+                <img src={order.cover} alt={order.cover} className="w-12 h-12 rounded-full" />
+                <span>{order.name}</span>
+              </td>
+              <td className="py-2 px-4">{order.Address}</td>
+              <td className="py-2 px-4">${order.amount}</td>
+              <td className="py-2 px-4 text-center">{order.quantity}</td>
+              <td className="py-2 px-4">${order.ToTal_Amount}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      {/* Summary */}
+      <div className="mt-6">
+        <p><strong>Subtotal:</strong>${order.amount} </p>
+        <h2 className="text-xl font-bold text-orange-500">Grand Total: ${order.ToTal_Amount}</h2>
+      </div>
+
+      {/* PDF Download Button */}
+      <div className="flex justify-end space-x-4 mt-4">
+        {/* <ReactToPdf
+          targetRef={tableRef}
+          filename={`order_${order.id}.pdf`}  
+          options={{
+            orientation: 'portrait',
+            unit: 'in',
+            format: [8.5, 11],  
+          }}
+          x={0.5}
+          y={0.5}
+        >
+          <span>
+
+            {({ toPdf }) => (
+              <button
+                onClick={toPdf}
+                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+              >
+                Download PDF Receipt
+              </button>
+            )}
+          </span>
+        </ReactToPdf> */}
+
+
+        
+      </div>
+    </div>
+  );
+};
+
+export default OrderTable;

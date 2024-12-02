@@ -1,0 +1,40 @@
+.CreateFileWrapper {
+    background-color: rgba(10, 20, 40, 1);
+    width: 90%;
+    height: fit-content;
+    position: fixed;
+    padding: 40px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999999;
+    overflow: hidden;
+    display: flex;
+    float: left;
+    align-items: center;
+    justify-content: center;
+    margin: 220px 0px 1px 100px;
+  }
+  
+  @media (max-width: 768px) {
+    .CreateFileWrapper {
+      width: 100%;
+      margin: 120px 0px 0px 0px;
+    }
+  }
+  .CreateFileContainer {
+    padding: 10px;
+    color: white;
+  }
+  .CreateFileContainer h3{
+    color: white;
+  }
+  
+  .btnicon{
+    background-color: none;
+    background: transparent;
+    border:none;
+    outline: none;
+    margin-left: 20px;
+  }

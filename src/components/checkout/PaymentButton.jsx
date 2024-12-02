@@ -44,6 +44,7 @@ export default function PaymentButton({ Amount, Currency, Orders }) {
   const ToTal_Amount = Orders.ToTal_Amount
   const id = Orders.id
   const Others = Orders.other_Orders
+  const buyerId = currentUser.uid
   const isDelivered = false
 
   console.log(Address, cover, amount, quantity, ToTal_Amount, id)
@@ -53,7 +54,7 @@ export default function PaymentButton({ Amount, Currency, Orders }) {
     const time = current.toLocaleTimeString("en-US");
     try {
       await addDoc(collection(db, "orders"), {
-        Address, cover, amount, quantity, ToTal_Amount, id, time, isDelivered, Others
+        Address, cover, amount, quantity, ToTal_Amount, id, time, isDelivered, Others, buyerId
       });
       navigate("/ordercompleted")
     } catch (error) {
@@ -69,6 +70,7 @@ export default function PaymentButton({ Amount, Currency, Orders }) {
   return (
     <div className="App">
       <button
+        className="w-full px-4 py-2 text-sm font-medium text-white bg-[#45c429] border border-transparent rounded-md shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
         disabled={Currency === "CUR" || Address === "Enter Your Address"}
         onClick={() => {
           handleFlutterPayment({

@@ -19,7 +19,7 @@ export default function Signin() {
       await signInWithEmailAndPassword(auth, Email, Password);
       setLoading(false);
       toast.success("logged in");
-      navigate("/");
+      navigate("/admin");
     } catch (error) {
       toast.error(error.message);
       setEmail("");
@@ -76,28 +76,6 @@ export default function Signin() {
               />
             </div>
           </div>
-
-          <div className="xs:flex space-y-3 sm:space-y-0 items-center justify-between">
-            <div className="flex  items-center">
-              <input
-                id="remember-me"
-                name="remember-me"
-                type="checkbox"
-                className="w-4 h-4  bg-white border-gray-300 rounded focus:ring-green-500"
-              />
-              <label
-                htmlFor="remember-me"
-                className="block ml-2 text-sm text-gray-900"
-              >
-                Remember me
-              </label>
-            </div>
-            <div className="text-sm text-black">
-              Dont have an account? <a href="/Signup">Sign Up</a>
-            </div>
-
-          </div>
-
           <div>
             <a href="/">
               <button

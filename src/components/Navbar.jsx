@@ -3,31 +3,53 @@ import { useSelector } from "react-redux";
 import { BiShoppingBag, BiUser } from "react-icons/bi";
 import Card from "./Navbar/Card";
 import { Logo } from "../assets/images";
-import { signOut } from "firebase/auth";
-import { auth } from "../assets/data/firebase";
+import { useUser } from "../Context/userContext";
+import { useNavigate, useParams } from "react-router";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [cardOpen, setCardOpen] = useState(false);
+  const [ProfileOpen, setProfileOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
+  const navigate = useNavigate()
+  const params = window.location.pathname;
+  useEffect(() => {
+    if (params.includes("admin")) {
+      setIsAdmin(true)
+    }
+
+  }, [params])
   const openCard = () => {
     setCardOpen((prev) => !prev);
   };
   const openMenu = () => {
     setMenuOpen((prev) => !prev);
   };
+  const OpenProfile = () => {
+    setProfileOpen((prev) => !prev);
+  };
+  const ReRoute = () => {
+    navigate("/signup")
+  }
   // const user = true;
   // const [profileOpen, setProfileOpen] = useState(false);
 
   const quantity = useSelector((state) => state.cart.totalQuantity);
-  // useEffect(() => {
-  localStorage.setItem("Quantity", JSON.stringify(quantity));
+  if (quantity > 0) {
+    localStorage.setItem("Quantity", JSON.stringify(quantity));
+  }
+
+  let _Quantity = JSON.parse(localStorage.getItem("Quantity"));
+
   // }, [quantity]);
+
 
   // const close = () => {
   //   setProfileOpen(null);
   // };
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,10 +75,19 @@ const Navbar = () => {
       ) : (
         ""
       )}
+      {ProfileOpen ? (
+        <Profile
+          openProfile={OpenProfile}
+        // total={total}
+        />
+      ) : (
+        ""
+      )}
+
       <div
-        className={`fixed top-0 left-0 w-full z-50 py-3 px-2 xd:px-8 transition-colors respoWhite duration-300 ${isScrolled
-            ? "bg-white text-black drop-shadow-xl"
-            : "bg-transparent text-white"
+        className={`fixed top-0 left-0 w-full ${isAdmin && "hidden"} z-50 py-3 px-2 xd:px-8 transition-colors respoWhite duration-300 ${isScrolled
+          ? "bg-white text-black drop-shadow-xl"
+          : "bg-transparent text-white"
           }`}
       >
         <div className="relative max-w-7xl m-auto flex items-center justify-between">
@@ -80,13 +111,13 @@ const Navbar = () => {
               ></path>
             </svg>
           </button>
-          <div className="flex items-center">
-            <a href="/">
-              <img src={Logo} className="w-12" alt="logo" />
+          <div className="flex items-center justify-center bg-red">
+            <a href="/home">
+              <img src={Logo} className="w-[100px]" alt="logo" />
             </a>
           </div>
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="/" className=" text-lg">
+          <div className="hidden md:flex items-center  justify-center  space-x-8">
+            <a href="/home" className=" text-lg">
               Home
             </a>
             <a href="/about-us" className=" text-lg">
@@ -95,38 +126,34 @@ const Navbar = () => {
             {/* <a href="#services" className=" text-lg">
               Services
             </a> */}
-            <a href="/our-products" className=" text-lg">
+            <a href="/" className=" text-lg">
               Our Products
             </a>
-            <a href="#footer" className=" text-lg">
+            <a href="/contact" className=" text-lg">
               Contact
             </a>
           </div>
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="/our-products"
-              className="bg-[#45c429]  py-2 px-4 rounded-full flex items-center"
+              href="/"
+              className="bg-[#4caf50]  py-2 px-4 rounded-full flex items-center justify-center"
             >
-              <span className="mr-2">Shop Now</span>
+              <span className="mr-2 text-white">Shop Now</span>
               <i className="fas fa-arrow-right"></i>
             </a>
-            <div
-              onClick={()=>{
-                signOut(auth)
-              }}
-              className="flex cursor-pointer items-start mr-[20px] "
-            >
-              <BiUser size={27} />
-            </div>
+
             <div
               onClick={openCard}
               className="flex cursor-pointer items-start mr-[20px] "
             >
               <BiShoppingBag size={27} />
-              <span>{quantity}</span>
+              <span>{_Quantity}</span>
             </div>
           </div>
           <div className="md:hidden flex items-center">
+
+
+
             <div
               onClick={openCard}
               className="flex cursor-pointer items-start "
@@ -137,6 +164,9 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+
+      {/* Mobile  */}
       <div
         onClick={openMenu}
         className={`fixed top-0 left-0 inset-0 z-40 w-full bg-black bg-opacity-90 transform ${menuOpen ? "translate-y-0" : "-translate-y-full"
@@ -146,7 +176,7 @@ const Navbar = () => {
           onClick={openMenu}
           className="flex flex-col items-center space-y-6 justify-center m-auto h-full py-8"
         >
-          <a href="/" className="text-[#8cc63f] text-lg">
+          <a href="/home" className="text-[#8cc63f] text-lg">
             Home
           </a>
           <a href="/about-us" className="text-white text-lg">
@@ -155,20 +185,13 @@ const Navbar = () => {
           {/* <a href="#services" className="text-white text-lg">
             Services
           </a> */}
-          <a href="/our-products" className="text-white text-lg">
+          <a href="/" className="text-white text-lg">
             Our Products
           </a>
-          <a href="#footer" className="text-white text-lg">
+          <a href="/contact" className="text-white text-lg">
             Contact
           </a>
-          <button className="bg-[#8cc63f] text-black py-2 px-4 rounded-full flex items-center"
-              onClick={()=>{
-                signOut(auth)
-              }}
-          >
-              <span className="mr-2">Log Out</span>
-              <i className="fas fa-arrow-right"></i>
-          </button>
+
         </div>
       </div>
     </>

@@ -9,7 +9,7 @@ const Home = () => {
     <>
       <div>
         <Header />
-        <section className="bg-[rgb(245,245,245)]  py-12 px-2 xd:px-8">
+        {/* <section className="bg-[rgb(245,245,245)]  py-12 px-2 xd:px-8">
           <div className="max-w-7xl sm:flex space-y-8 sm:space-y-0 items-start m-auto w-[90%]">
             <div className="sm:w-[60%]">
               <h2 className="text-2xl xs:text-[45px] text-[#4caf50] font-bold">
@@ -39,12 +39,12 @@ const Home = () => {
               </p>
             </div>
           </div>
-        </section>
+        </section> */}
 
-        <section id="services" className="bg-[#f5f5f5] text-black py-12">
+        {/* <section id="services" className="bg-[#f5f5f5] text-black py-12">
           <div className="max-w-7xl mx-auto px-4">
-            {/* Showcasing Clairedre Farms' Experience and Offerings */}
-            {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8 xs:w-[90%] m-auto md:w-full">
+            Showcasing Clairedre Farms' Experience and Offerings
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 xs:w-[90%] m-auto md:w-full">
               <div className="relative">
                 <img
                   src="https://primalpastures.com/cdn/shop/files/PrimalPasturesJune2023-133_1.jpg?v=1688620985&width=550"
@@ -68,7 +68,7 @@ const Home = () => {
               </div>
 
               
-            </div> */}
+            </div> 
 
 
             <div className="AgroProducts">
@@ -125,35 +125,14 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* <Table /> */}
-
-        <div className="whyYouNeedUs   max-w-7xl mx-auto px-4">
-          <div className="WhatWEDoContainer">
-            <div className="imageCon">
-              <img src={image3} alt="WhatWeBring" />
-            </div>
-            <div className="tetCon">
-              <div className="heading">
-                <hr />
-                <h3>Wy you need us </h3>
-              </div>
-              <h2>
-                PROVIDING EXCEPTIONAL LANDSCAPING
-              </h2>
-              We are not talking about just any “Landscaping”, we are depicting what it means to provide exceptional agricultural landscaping in improving your business and way of life.
-              <Link className="mt-6 px-3 py-1.5 bg-[#4caf50] text-[white] font-semibold rounded-[4px]">
-                Learn More
-              </Link>
-            </div>
-
-          </div>
-        </div>
-
         <div className="BecomInvestor  max-w-7xl mx-auto px-4">
           <div className="WhatWEDoContainer invest">
-
+          <div className="imageCon">
+              <img src={image4} alt="WhatWeBring" />
+            </div>
             <div className="tetCon">  
               <div className="heading">
                 <hr />
@@ -172,13 +151,30 @@ const Home = () => {
                 Learn More
               </Link>
             </div>
-
-            <div className="imageCon">
-              <img src={image4} alt="WhatWeBring" />
-            </div>
-
           </div>
         </div>
+
+        <div className="whyYouNeedUs   max-w-7xl mx-auto px-4">
+          <div className="WhatWEDoContainer">
+            <div className="tetCon">
+              <div className="heading">
+                <hr />
+                <h3>Why you need us </h3>
+              </div>
+              <h2>
+                PROVIDING EXCEPTIONAL LANDSCAPING
+              </h2>
+              We are not talking about just any “Landscaping”, we are depicting what it means to provide exceptional agricultural landscaping in improving your business and way of life.
+              <Link className="mt-6 px-3 py-1.5 bg-[#4caf50] text-[white] font-semibold rounded-[4px]">
+                Learn More
+              </Link>
+            </div>
+            <div className="imageCon">
+              <img src={image3} alt="WhatWeBring" />
+            </div>
+          </div>
+        </div>
+
         {/* Why you need us  */}
 
 

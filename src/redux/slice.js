@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   itemsList: [],
   totalQuantity: 0,
+  cartType: "USD",
 };
 const cartSlice = createSlice({
   name: "carts",
@@ -42,5 +43,22 @@ const cartSlice = createSlice({
   },
 });
 
+export const cartTypeSlice = createSlice({
+  name: "Currency",
+  initialState,
+  reducers: {
+    setCartType(state, action) {
+      const _cartType = action.payload;
+      const IsCartAvailabe = state.cartType === _cartType.cartType;
+      if (IsCartAvailabe) {
+        return;
+      } else {
+        state.cartType = _cartType.title;
+      }
+    },
+  },
+});
+
 export const cartActions = cartSlice.actions;
+export const cartTypeActions = cartTypeSlice.actions;
 export default cartSlice;

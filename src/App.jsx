@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
   Navigate,
-  // Router,
-  // Routes,w
-  // BrowserRouter,
 } from "react-router-dom";
 import "./assets/Styles/Style.css"
 import Layout from "./Layouts/RootLayout";
@@ -26,6 +23,11 @@ import ProductDetails from "./components/Product/ProductDetails";
 import Payment from "./components/checkout/Payment";
 import { useUser } from "./Context/userContext";
 import OrderCompleted from "./components/OrderCompleted";
+import ForgottenPassword from "./components/ForgottenPassword";
+import OrdersPage from "./components/Orders";
+import Contact from "./components/Contact/Contact";
+import ManageProducts from "./Hooks/AdminAddProduct";
+import Admin from "./components/Admin";
 
 function App() {
   const cartItems = useSelector((state) => state.cart.itemsList);
@@ -36,9 +38,12 @@ function App() {
   itemLists.forEach((item) => {
     total += item.totalPrice;
   });
+  console.log(cartItems)
   useEffect(() => {
     // Save cart data to local storage whenever the 'items' state changes
-    localStorage.setItem("cart", JSON.stringify(cartItems));
+    if (cartItems && cartItems.length > 0) {
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+    }
   }, [cartItems]);
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -47,7 +52,7 @@ function App() {
 
 
   const { currentUser } = useUser();
-  // const currentUser = null;
+  console.log(currentUser)
 
 
 
@@ -57,16 +62,21 @@ function App() {
       <Route>
         <Route
           path="/"
-          element={currentUser ? <Layout /> : <Navigate to="/Signup" />}
+          element={<Layout />}
+
         >
-          <Route index element={<Home />} />
+          <Route index element={<OurProduct />} />
           <Route path="/about-us" element={<Aboutus />} />
-          <Route path="/our-products" element={<OurProduct />} />
-          <Route path="/our-products/:id" element={<ProductDetails />} />
+          <Route path="/home" element={< Home />} />
+          <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/checkout" element={<Payment />} />
+          <Route path="/orders" element={currentUser ? <OrdersPage /> : <Signin />} />
           <Route path="/ordercompleted" element={<OrderCompleted />} />
+          <Route path="/addproduct" element={currentUser ? <ManageProducts /> : <Signin />} />
+          <Route path="/admin" element={currentUser ? <Admin /> : <Signin />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<OurProduct />} />
         </Route>
-        <Route path="/Signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
       </Route>
     )

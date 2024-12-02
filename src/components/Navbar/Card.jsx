@@ -18,7 +18,23 @@ const Card = ({ openCard }) => {
 
 
 
-  const { currentUser } = useUser();
+  // const { currentUser } = useUser();
+  // console.log(currentUser);
+
+  //  // Fetch cart from localStorage when the component mounts
+  //  useEffect(() => {
+  //   const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+  //   setCart(storedCart);
+  // }, []);
+
+  // const handleRemoveFromCart = (productId) => {
+  //   const updatedCart = cart.filter(item => item.productId !== productId);
+  //   localStorage.setItem('cart', JSON.stringify(updatedCart));
+  //   setCart(updatedCart);
+  // };
+
+  // console.log(cart)
+
 
   return (
     <>
@@ -32,7 +48,7 @@ const Card = ({ openCard }) => {
               <div className="flex w-full font-bold text-xl px-4 py-1 items-center  justify-between">
                 <p>Cart Item</p>
 
-                <span>{currentUser.displayName}</span>
+                {/* <span>{currentUser.displayName}</span> */}
                 <div
                   className=" cursor-pointer hover:border-[1px] p-1 rounded-xl"
                   onClick={openCard}
@@ -63,7 +79,7 @@ const Card = ({ openCard }) => {
                     </p>
                   )}
                   <Link
-                    to={total > 0 && "checkout"}
+                    to={"checkout"}
                     className=" fixed flex w-[60%] md:w-[50%] bottom-3 justify-center "
                   >
                     <div className="bg-black bg-opacity-80 backdrop-blur-[1px] drop-shadow-lg  text-white h-14 items-center rounded-lg justify-center w-[80%] flex  ">
@@ -75,7 +91,7 @@ const Card = ({ openCard }) => {
                         >
                           <p className="mr-5">|</p>
                           {/* <p>${total}</p> */}
-                          <p>${Math.round(`${total}`)}</p>
+                          <p>{Math.round(`${total}`)}</p>
                         </label>
                       </div>
                     </div>
@@ -124,10 +140,10 @@ const Card = ({ openCard }) => {
                     Your cart is empty
                   </p>
                 )}
-                <Link
-                  to={total > 0 && "checkout"}
-                  className=" fixed xs:flex w-full md:w-[50%] bottom-3 justify-center "
-                >
+                 <Link
+                    to={"checkout"}
+                    className=" fixed flex w-[60%] md:w-[50%] bottom-3 justify-center "
+                  >
                   <div className="bg-black bg-opacity-80 backdrop-blur-[1px] drop-shadow-lg  text-white h-14 items-center rounded-lg justify-center w-[90%] flex  ">
                     <div className="flex justify-between text-[10px] xxs:text-xs sm:text-base w-[65%]">
                       <span>Proceed To Checkout</span>
@@ -136,7 +152,7 @@ const Card = ({ openCard }) => {
                         htmlFor=""
                       >
                         <p className="mr-5">|</p>
-                        <p>$ {Math.round(`${total}`)}</p>
+                        <p> {Math.round(`${total}`)}</p>
                       </label>
                     </div>
                   </div>

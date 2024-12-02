@@ -17,6 +17,8 @@ import Product7 from "./Products/product7.jpg";
 import Product8 from "./Products/product8.jpg";
 import Product9 from "./Products/product9.jpg";
 import Product10 from "./Products/product10.jpg";
+import Person from "./person.jpg";
+
 
 
 
@@ -48,5 +50,6 @@ export {
   Team1,
   Team2,
   Team3,
-  Team4
+  Team4,
+  Person
 };

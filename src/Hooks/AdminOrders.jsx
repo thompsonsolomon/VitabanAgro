@@ -24,7 +24,7 @@ const AdminOrders = () => {
     }, []);
 
     // Toggle delivery status in Firebase
-    const toggleStatus = (orderId, currentStatus) => {
+    const toggleStatus1 = (orderId, currentStatus) => {
         console.log(currentStatus, orderId)
         try {
             const orderRef = ref(database, `orders/${orderId}`);
@@ -38,6 +38,21 @@ const AdminOrders = () => {
             console.log(error)
         }
     };
+
+const toggleStatus = async (orderId, currentStatus) => {
+    console.log(currentStatus, orderId);
+    try {
+        const orderRef = doc(db, 'orders', orderId); // Update the reference for Firestore
+        const newStatus = !currentStatus;
+
+        // Update the status in Firestore
+        await updateDoc(orderRef, { status: newStatus });
+        console.log("Status toggled successfully:", newStatus);
+    } catch (error) {
+        console.error("Error toggling status:", error);
+    }
+};
+
 
     return (
         <div className="p-6 bg-gray-100 min-h-screen">

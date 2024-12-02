@@ -48,6 +48,7 @@ const toggleStatus = async (orderId, currentStatus) => {
         // Update the status in Firestore
         await updateDoc(orderRef, { status: newStatus });
         console.log("Status toggled successfully:", newStatus);
+alert("Updated") 
     } catch (error) {
         console.error("Error toggling status:", error);
     }

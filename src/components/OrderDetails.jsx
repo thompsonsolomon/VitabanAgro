@@ -43,36 +43,36 @@ const OrderDetails = () => {
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold text-gray-500 mb-6">Order Details</h1>
+      <h1 className="text-3xl font-bold text-blue-700 mb-6">Order Details</h1>
       <div className="bg-white p-4 shadow-md rounded-lg">
-        <p className="text-LG text-black">
-          <strong className="text-black" >User Name:</strong> {order.Name}{" "}
+        <p className="text-lg text-blue-500">
+          <strong className="text-blue-600">User Name:</strong> {order.Name}{" "}
           <button
             onClick={() => copyToClipboard(order.Name)}
-            className="ml-2 bg-gray px-2 py-1 rounded text-sm"
+            className="ml-2 bg-blue-100 px-2 py-1 rounded text-sm text-blue-800"
           >
             Copy
           </button>
         </p>
-        <p className="text-lg text-black">
-          <strong className=" text-black">Phone Number:</strong> {order.phone}{" "}
+        <p className="text-lg text-green-500">
+          <strong className="text-green-600">Phone Number:</strong> {order.phone}{" "}
           <button
             onClick={() => copyToClipboard(order.phone)}
-            className="ml-2 bg-gray px-2 py-1 rounded text-sm"
+            className="ml-2 bg-green-100 px-2 py-1 rounded text-sm text-green-800"
           >
             Copy
           </button>
         </p>
-        <p className="text-lg text-black">
-          <strong className="text-black">Address:</strong> {order.Address}{" "}
+        <p className="text-lg text-red-500">
+          <strong className="text-red-600">Address:</strong> {order.Address}{" "}
           <button
             onClick={() => copyToClipboard(order.Address)}
-            className="ml-2 bg-gray px-2 py-1 rounded text-sm"
+            className="ml-2 bg-red-100 px-2 py-1 rounded text-sm text-red-800"
           >
             Copy
           </button>
         </p>
-        <h2 className="text-2xl font-bold mt-6">Cart Items</h2>
+        <h2 className="text-2xl font-bold mt-6 text-purple-700">Cart Items</h2>
         <ul>
           {order.cartItems.map((item) => (
             <li
@@ -85,12 +85,18 @@ const OrderDetails = () => {
                 className="w-16 h-16 mr-4 rounded object-cover"
               />
               <div>
-                <p className="text-black" >{item.name}</p>
-                <p className="text-black">
-                  Quantity: {item.quantity}, Price: {order.Currency} {item.price}
+                <p className="text-orange-600">{item.name}</p>
+                <p className="text-gray-600">
+                  Quantity: {item.quantity}, Price:{" "}
+                  <span className="text-gray-800">
+                    {order.Currency} {item.price}
+                  </span>
                 </p>
-                <p className="text-black" >
-                  Total: {order.Currency} {item.totalPrice}
+                <p className="text-gray-600">
+                  Total:{" "}
+                  <span className="text-gray-800">
+                    {order.Currency} {item.totalPrice}
+                  </span>
                 </p>
               </div>
             </li>

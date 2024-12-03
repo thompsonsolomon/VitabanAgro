@@ -100,7 +100,7 @@ focus:border-green-500 sm:text-sm"
                     {/* {AllData.map((item) => ( */}                    {
                       //product.map((item) => {
  AllData.map((item) => {                      
-                        const price = item.price.find(price => price.currency === Currency)?.value
+                        const price = item.price.find(price => price.currency =Currency)?.value
                         return (
                           <ProductCart
                             key={item.id}
@@ -126,7 +126,7 @@ focus:border-green-500 sm:text-sm"
 
                     {
                       searchResults.map((item) => {
-                        const price = item.price.find(price => price.currency === Currency)?.value
+                        const price = item.price.find(price => price.currency = Currency)?.value
                         return (
                           <ProductCart
                             key={item.id}

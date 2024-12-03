@@ -3,22 +3,36 @@ import { useParams } from "react-router-dom";
 import { ref, get } from "firebase/database";
 import { db } from '../assets/data/firebase';
 const OrderDetails = () => {
-  const { id } = useParams(); // Get the order ID from the URL
   const [order, setOrder] = useState(null);
+const params = useParams();
+    // const ID = parseInt(params.id)
+    
 
-  useEffect(() => {
-    const orderRef = ref(db, `orders/${id}`);
+    const [AllData, setAllData] = useState([]);
+    let StreamArrey = [];
+    const [isLoading, setIsLoading] = useState(false);
+    useEffect(() => {
+        setIsLoading(true);
+        const q = query(collection(db, "orders"));
+        const unsub = onSnapshot(q, (querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                StreamArrey.push({ ...doc.data(), id: doc.id });
+            });
+            setAllData(StreamArrey);
+            setIsLoading(false);
+        });
+        return () => unsub();
 
-    get(orderRef)
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          setOrder(snapshot.val());
-        } else {
-          console.error("Order not found!");
-        }
-      })
-      .catch((error) => console.error("Error fetching order:", error));
-  }, [id]);
+
+const orderDetails = AllData.filter(function (e) {
+        return e.id === params.id;
+    });
+
+setOrder(orderDetails)
+    }, []);
+    console.log(AllData);
+
+    
 
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text).then(() => {

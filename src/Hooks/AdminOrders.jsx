@@ -42,12 +42,7 @@ toast.info( currentStatus );
                        
 
 <div>
-                                <p className="text-lg font-semi bold text-gray-600">Order Date:{order.Status} </p>
-
-
-                                <p className="text-lg font-semi bold text-gray-600">Order Date:{order.id} </p>
-
-
+                            
 <p className="text-lg font-semi bold text-gray-600">Order Date: {order.date}</p>
                                 <p className="text-gray-600">
                                     Total Price: {order.currency} {order.totalPrice}

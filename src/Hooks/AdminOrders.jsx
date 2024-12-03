@@ -45,7 +45,7 @@ const AdminOrders = () => {
       );
 
       toast.success(
-        `Order ${orderId} status updated to ${newStatus ? "Delivered" : "Not Delivered"}.`
+        `Order status updated to ${newStatus ? "Delivered" : "Not Delivered"}.`
       );
     } catch (error) {
       toast.error("Error updating order status. Please try again.");

@@ -5,17 +5,24 @@ import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot } from "fireb
 import CreateFileLink from "./CreateFileLink";
 
 const ManageProducts = () => {
+
+const generateId = () => {
+  const randomString = Math.random().toString(36).substring(2, 12); // Generate a random alphanumeric string
+  const randomSuffix = Math.random().toString(36).substring(2, 6); // Add an additional random suffix
+  return `${randomString}${randomSuffix}`; // Combine the random string with a suffix
+};
+
     const [products, setProducts] = useState([]);
     const [form, setForm] = useState({
-        id: "",
+        id:generateId(), 
         name: "",
         cover: "",
         desc: "",
         qty: 1,
         price: [
-            { currency: "usd", value: "" },
-            { currency: "ngn", value: "" },
-            { currency: "eur", value: "" },
+            { currency: "USD", value: 0},
+            { currency: "NGN", value: 0 },
+            { currency: "EUR", value: 0 },
         ],
     });
     const [isEditing, setIsEditing] = useState(false);
@@ -91,9 +98,9 @@ const ManageProducts = () => {
             desc: "",
             qty: 1,
             price: [
-                { currency: "usd", value: "" },
-                { currency: "ngn", value: "" },
-                { currency: "eur", value: "" },
+                { currency: "usd", value: 0 },
+                { currency: "ngn", value: 0 },
+                { currency: "eur", value: 0},
             ],
         });
         setIsEditing(false);

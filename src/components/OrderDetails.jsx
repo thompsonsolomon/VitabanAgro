@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ref, get } from "firebase/database";
 import { db } from '../assets/data/firebase';
+import {
+    collection,
+} from "firebase/firestore";
+
+import { query, onSnapshot } from "firebase/firestore";
+
 const OrderDetails = () => {
   const [order, setOrder] = useState(null);
 const params = useParams();

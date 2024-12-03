@@ -171,13 +171,13 @@ const ManageProducts = () => {
           {form.price.map((price, index) => (
             <div key={index}>
               <label className="block text-sm font-medium">
-                {price.currency.toUpperCase()} Price:
+                {price.Currency.toUpperCase()} Price:
               </label>
               <input
                 type="number"
                 value={price.value}
                 onChange={(e) => handlePriceChange(index, e.target.value)}
-                placeholder={`Price in ${price.currency.toUpperCase()}`}
+                placeholder={`Price in ${price.Currency.toUpperCase()}`}
                 className="border p-2 rounded w-full"
                 required
               />

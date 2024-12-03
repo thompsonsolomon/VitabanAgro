@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ref, onValue, update } from "firebase/database";
 import { database, db } from "../assets/data/firebase";
 import { collection, onSnapshot, query } from 'firebase/firestore';
-
+import { toast } from 'react-toastify';
 
 const AdminOrders = () => {
     const [orders, setOrders] = useState([]);
@@ -23,33 +23,21 @@ const AdminOrders = () => {
         return () => unsub();
     }, []);
 
-    // Toggle delivery status in Firebase
-    const toggleStatus1 = (orderId, currentStatus) => {
-        console.log(currentStatus, orderId)
-        try {
-            const orderRef = ref(database, `orders/${orderId}`);
-            const newStatus = !currentStatus;
 
-            // Update the status in Firebase
-            update(orderRef, { status: newStatus });
-            console.log("done")
-            console.log(currentStatus)
-        } catch (error) {
-            console.log(error)
-        }
-    };
+
 
 const toggleStatus = async (orderId, currentStatus) => {
     console.log(currentStatus, orderId);
     try {
-        const orderRef = doc(db, 'orders', orderId); // Update the reference for Firestore
+        const orderRef = doc(db, 'orders', orderId); // Firestore reference
         const newStatus = !currentStatus;
 
         // Update the status in Firestore
         await updateDoc(orderRef, { status: newStatus });
+        toast.success(`Order status updated to ${newStatus ? "Delivered" : "Undelivered"}`);
         console.log("Status toggled successfully:", newStatus);
-alert("Updated") 
     } catch (error) {
+        toast.error("Failed to toggle order status. Please try again.");
         console.error("Error toggling status:", error);
     }
 };

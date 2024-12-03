@@ -55,7 +55,7 @@ const Foot = () => {
           <h2 className="text-lg font-semibold text-black mb-4">Follow Us</h2>
           <div className="flex space-x-4">
             <a
-              href="#"
+              href="https://www.facebook.com/share/YpBDZrnhZLz7MFRC/"
               className="p-3 rounded-full bg-[#4caf50] text-green-900 hover:bg-green-500 hover:text-white "
               aria-label="Facebook"
             >
@@ -69,7 +69,7 @@ const Foot = () => {
               <FaTwitter />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/vitabanagro/profilecard/?igsh=dHg3em42anZhdHp2"
               className="p-3 rounded-full bg-[#4caf50] text-green-900 hover:bg-green-500 hover:text-white "
               aria-label="Instagram"
             >

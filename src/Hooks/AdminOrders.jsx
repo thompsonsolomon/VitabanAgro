@@ -24,26 +24,31 @@ const AdminOrders = () => {
     }, []);
 
 
-
-
 const toggleStatus = async (orderId, currentStatus) => {
-    console.log(currentStatus, orderId);
     try {
-        const orderRef = doc(db, 'orders', orderId); // Firestore reference
+        // Display initial message
+        toast.info(`Attempting to toggle status for Order ID: ${orderId}`);
+
+        // Ensure Firestore instance is initialized
+        if (!db) {
+            toast.error("Firestore instance is not initialized.");
+            return;
+        }
+
+        // Reference to the document in Firestore
+        const orderRef = doc(db, 'orders', orderId);
         const newStatus = !currentStatus;
 
-        // Update the status in Firestore
+        // Update Firestore
         await updateDoc(orderRef, { status: newStatus });
-        toast.success(`Order status updated to ${newStatus ? "Delivered" : "Undelivered"}`);
-        console.log("Status toggled successfully:", newStatus);
-    } catch (error) {
-        toast.error("Failed to toggle order status. Please try again.");
 
-toast.error(error.message);
-        console.error("Error toggling status:", error);
+        // Success toast notification
+        toast.success(`Order status successfully updated to ${newStatus ? "Delivered" : "Undelivered"}`);
+    } catch (error) {
+        // Error toast notification
+        toast.error(`Error toggling status: ${error.message}`);
     }
 };
-
 
     return (
         <div className="p-6 bg-gray-100 min-h-screen">
@@ -55,7 +60,8 @@ toast.error(error.message);
                         className="bg-white p-4 shadow-md rounded-lg border border-gray-300"
                     >
                         <div className="flex justify-between items-center">
-                            <div>
+
+                       {order.id, order.Status}<div>
                                 <p className="text-lg font-semibold">Order Date: {order.date}</p>
                                 <p className="text-gray-600">
                                     Total Price: {order.currency} {order.totalPrice}

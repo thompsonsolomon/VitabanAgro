@@ -40,7 +40,7 @@ const toggleStatus = async (orderId, currentStatus) => {
         toast.error("Failed to toggle order status. Please try again.");
 
 toast.error(error);
-        console.error("Error toggling status:", error);
+        toast.error("Error toggling status:", error);
     }
 };
 

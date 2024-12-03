@@ -36,14 +36,19 @@ const ManageProducts = () => {
 
   const handlePriceChange = (index, value) => {
     const updatedPrices = [...form.price];
-    updatedPrices[index].value = parseFloat(value) || 0; // Ensure price is stored as a number
+    const parsedValue = parseFloat(value);
+    if (!isNaN(parsedValue)) {
+      updatedPrices[index].value = parsedValue; // Ensure price is stored as a number
+    }
     updatedPrices[index].currency = updatedPrices[index].currency.toUpperCase(); // Ensure currency is uppercase
     setForm({ ...form, price: updatedPrices });
   };
 
   const handleQuantityChange = (e) => {
-    const value = parseInt(e.target.value);
-    setForm({ ...form, qty: value });
+    const value = parseInt(e.target.value, 10);
+    if (!isNaN(value) && value > 0) {
+      setForm({ ...form, qty: value });
+    }
   };
 
   // Handle submit

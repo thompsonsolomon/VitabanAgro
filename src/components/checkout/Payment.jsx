@@ -53,7 +53,7 @@ export default function Payment() {
     const OrderStatus = false
     try {
       await addDoc(collection(db, "orders"), {
-        cartItems, time,
+        cartItems, time,totalPrice:total, 
         Name, Email, Phone, Address, Currency, date, status: OrderStatus
       });
       console.log("success", "Order Added Successfully");

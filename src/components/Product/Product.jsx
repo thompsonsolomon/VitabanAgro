@@ -46,7 +46,7 @@ const Product = () => {
     setSearchResults(results);
   };
   const dispatch = useDispatch();
-  const [selectedCurrency, setSelectedCurrency] = useState("usd")
+  const [selectedCurrency, setSelectedCurrency] = useState("ngn")
   const handleChangeCurrency = (e) => {
     setSelectedCurrency(e.target.value)
     dispatch(cartTypeActions.setCartType({ title: e.target.value }));

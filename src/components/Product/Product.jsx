@@ -84,8 +84,9 @@ focus:ring-2 focus:ring-green-500
 focus:border-green-500 sm:text-sm"
           onChange={handleChangeCurrency}
         >
+  <option value="ngn">NGN</option>
           <option value="usd">USD</option>
-          <option value="ngn">NGN</option>
+        
           {/* <option value="GBP">GBP</option> */}
           <option value="eur">EUR</option>
         </select>

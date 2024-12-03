@@ -126,7 +126,7 @@ const ManageProducts = () => {
         </button>
         {isCreatingFile && <CreateFileLink />}
       </div>
-      <h1 className="text-2xl font-bold mb-6">Manage Products</h1>
+      <h1 className="text-2xl font-bold mb-6 text-black">Manage Products</h1>
 
       {/* Form */}
       <form onSubmit={handleSubmit} className="bg-white p-6 shadow rounded mb-6">
@@ -171,13 +171,13 @@ const ManageProducts = () => {
           {form.price.map((price, index) => (
             <div key={index}>
               <label className="block text-sm font-medium">
-                {price.Currency.toUpperCase()} Price:
+                {price.currency.toUpperCase()} Price:
               </label>
               <input
                 type="number"
                 value={price.value}
                 onChange={(e) => handlePriceChange(index, e.target.value)}
-                placeholder={`Price in ${price.Currency.toUpperCase()}`}
+                placeholder={`Price in ${price.currency.toUpperCase()}`}
                 className="border p-2 rounded w-full"
                 required
               />

@@ -25,7 +25,7 @@ import { useUser } from "./Context/userContext";
 import OrderCompleted from "./components/OrderCompleted";
 import ForgottenPassword from "./components/ForgottenPassword";
 import OrdersPage from "./components/Orders";
-import OrdersPage from "./components/OrderDetails";
+import OrderDetails from "./components/OrderDetails";
 import Contact from "./components/Contact/Contact";
 import ManageProducts from "./Hooks/AdminAddProduct";
 import Admin from "./components/Admin";

@@ -36,7 +36,8 @@ const ManageProducts = () => {
 
   const handlePriceChange = (index, value) => {
     const updatedPrices = [...form.price];
-    updatedPrices[index].value = value;
+    updatedPrices[index].value = parseFloat(value) || 0; // Ensure price is stored as a number
+    updatedPrices[index].currency = updatedPrices[index].currency.toUpperCase(); // Ensure currency is uppercase
     setForm({ ...form, price: updatedPrices });
   };
 

@@ -26,29 +26,6 @@ const AdminOrders = () => {
 
 const toggleStatus = async (orderId, currentStatus) => {
 toast.info(orderId, currentStatus );
-    try {
-        // Display initial message
-        toast.info(`Attempting to toggle status for Order ID: ${orderId}`);
-
-        // Ensure Firestore instance is initialized
-        if (!db) {
-            toast.error("Firestore instance is not initialized.");
-            return;
-        }
-
-        // Reference to the document in Firestore
-        const orderRef = doc(db, 'orders', orderId);
-        const newStatus = !currentStatus;
-
-        // Update Firestore
-        await updateDoc(orderRef, { status: newStatus });
-
-        // Success toast notification
-        toast.success(`Order status successfully updated to ${newStatus ? "Delivered" : "Undelivered"}`);
-    } catch (error) {
-        // Error toast notification
-        toast.error(`Error toggling status: ${error.message}`);
-    }
 };
 
     return (
@@ -63,7 +40,7 @@ toast.info(orderId, currentStatus );
                         <div className="flex justify-between items-center">
 
                        {order.id, order.Status}<div>
-                                <p className="text-lg font-semibold">Order Date: {order.date}</p>
+                                <p className="text-lg font-semi bold text-gray-600">Order Date: {order.date}</p>
                                 <p className="text-gray-600">
                                     Total Price: {order.currency} {order.totalPrice}
                                 </p>

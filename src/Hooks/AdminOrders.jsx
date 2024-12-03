@@ -25,7 +25,7 @@ const AdminOrders = () => {
 
 
 const toggleStatus = async (orderId, currentStatus) => {
-toast.info(orderId, currentStatus );
+toast.info( currentStatus );
 };
 
     return (

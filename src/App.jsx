@@ -1,97 +1,104 @@
-import { useEffect, useState } from "react";
-import "./App.css";
-import Header from "./components/Header";
-// import Footer from "./components/Footer";
-import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-  RouterProvider,
-  Navigate,
-} from "react-router-dom";
-import "./assets/Styles/Style.css"
-import Layout from "./Layouts/RootLayout";
-import Home from "./components/Home";
-import OurProduct from "./components/OurProduct";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useSelector } from "react-redux";
-import Aboutus from "./components/Aboutus";
-import Signup from "./components/Signup";
-import Signin from "./components/Signin";
-import ProductDetails from "./components/Product/ProductDetails";
-import Payment from "./components/checkout/Payment";
-import { useUser } from "./Context/userContext";
-import OrderCompleted from "./components/OrderCompleted";
-import ForgottenPassword from "./components/ForgottenPassword";
-import OrdersPage from "./components/Orders";
-import OrderDetails from "./components/OrderDetails";
-import Contact from "./components/Contact/Contact";
-import ManageProducts from "./Hooks/AdminAddProduct";
-import Admin from "./components/Admin";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { collection, query, onSnapshot } from "firebase/firestore";
+import { db } from "../assets/data/firebase";
 
-function App() {
-  const cartItems = useSelector((state) => state.cart.itemsList);
-  const itemLists = useSelector((state) => state.cart.itemsList);
-  const [items, setItems] = useState([cartItems]);
+const OrderDetails = () => {
+  const { id } = useParams(); // Extract the order ID from URL params
+  const [order, setOrder] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  let total = 0;
-  itemLists.forEach((item) => {
-    total += item.totalPrice;
-  });
-  console.log(cartItems)
   useEffect(() => {
-    // Save cart data to local storage whenever the 'items' state changes
-    if (cartItems && cartItems.length > 0) {
-      localStorage.setItem("cart", JSON.stringify(cartItems));
-    }
-  }, [cartItems]);
-  useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setItems(savedCart);
-  }, []);
+    setIsLoading(true);
 
+    // Query the Firebase "orders" collection
+    const q = query(collection(db, "orders"));
+    const unsub = onSnapshot(q, (querySnapshot) => {
+      let foundOrder = null;
+      querySnapshot.forEach((doc) => {
+        if (doc.id === id) {
+          foundOrder = { ...doc.data(), id: doc.id };
+        }
+      });
+      setOrder(foundOrder);
+      setIsLoading(false);
+    });
 
-  const { currentUser } = useUser();
-  console.log(currentUser)
+    return () => unsub(); // Clean up the listener
+  }, [id]);
 
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Copied to clipboard!");
+    });
+  };
 
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
-
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route>
-        <Route
-          path="/"
-          element={<Layout />}
-
-        >
-          <Route index element={<OurProduct />} />
-          <Route path="/about-us" element={<Aboutus />} />
-          <Route path="/home" element={< Home />} />
-          <Route path="/products/:id" element={<ProductDetails />} />
-
-<Route path="/order/:id" element={<OrderDetails />} />
-
-          <Route path="/checkout" element={<Payment />} />
-          <Route path="/orders" element={currentUser ? <OrdersPage /> : <Signin />} />
-          <Route path="/ordercompleted" element={<OrderCompleted />} />
-          <Route path="/addproduct" element={currentUser ? <ManageProducts /> : <Signin />} />
-          <Route path="/admin" element={currentUser ? <Admin /> : <Signin />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<OurProduct />} />
-        </Route>
-        <Route path="/signin" element={<Signin />} />
-      </Route>
-    )
-  );
+  if (!order) {
+    return <p>Order not found</p>;
+  }
 
   return (
-    <>
-      <ToastContainer />
-      <RouterProvider router={router} />
-    </>
+    <div className="p-6 bg-gray-100 min-h-screen">
+      <h1 className="text-3xl font-bold text-gray-800 mb-6">Order Details</h1>
+      <div className="bg-white p-4 shadow-md rounded-lg">
+        <p className="text-LG text-black">
+          <strong>User Name:</strong> {order.Name}{" "}
+          <button
+            onClick={() => copyToClipboard(order.Name)}
+            className="ml-2 bg-gray px-2 py-1 rounded text-sm"
+          >
+            Copy
+          </button>
+        </p>
+        <p className="text-lg text-black">
+          <strong>Phone Number:</strong> {order.phone}{" "}
+          <button
+            onClick={() => copyToClipboard(order.phone)}
+            className="ml-2 bg-gray px-2 py-1 rounded text-sm"
+          >
+            Copy
+          </button>
+        </p>
+        <p className="text-lg text-black">
+          <strong>Address:</strong> {order.Address}{" "}
+          <button
+            onClick={() => copyToClipboard(order.Address)}
+            className="ml-2 bg-gray px-2 py-1 rounded text-sm"
+          >
+            Copy
+          </button>
+        </p>
+        <h2 className="text-2xl font-bold mt-6">Cart Items</h2>
+        <ul>
+          {order.cartItems.map((item) => (
+            <li
+              key={item.id}
+              className="mt-2 p-2 border-b last:border-b-0 flex items-center"
+            >
+              <img
+                src={item.cover}
+                alt={item.name}
+                className="w-16 h-16 mr-4 rounded object-cover"
+              />
+              <div>
+                <p className="text-black" >{item.name}</p>
+                <p className="text-black">
+                  Quantity: {item.quantity}, Price: {order.Currency} {item.price}
+                </p>
+                <p className="text-black" >
+                  Total: {order.Currency} {item.totalPrice}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
-}
+};
 
-export default App;
+export default OrderDetails;

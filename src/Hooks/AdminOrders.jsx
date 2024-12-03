@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ref, onValue, update } from "firebase/database";
 import { database, db } from "../assets/data/firebase";
-import { collection, onSnapshot, query } from 'firebase/firestore';
+import { collection, onSnapshot, query, updateDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 
 const AdminOrders = () => {

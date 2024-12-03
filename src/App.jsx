@@ -43,7 +43,7 @@ const OrderDetails = () => {
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">Order Details</h1>
+      <h1 className="text-3xl font-bold text-gray-500 mb-6">Order Details</h1>
       <div className="bg-white p-4 shadow-md rounded-lg">
         <p className="text-LG text-black">
           <strong>User Name:</strong> {order.Name}{" "}

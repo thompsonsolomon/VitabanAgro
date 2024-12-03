@@ -36,7 +36,7 @@ const ManageProducts = () => {
 
   const handlePriceChange = (index, value) => {
     const updatedPrices = [...form.price];
-    const parsedValue = parseFloat(value);
+    const parsedValue = parseInt(value);
     if (!isNaN(parsedValue)) {
       updatedPrices[index].value = parsedValue; // Ensure price is stored as a number
     }

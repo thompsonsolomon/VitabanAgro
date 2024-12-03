@@ -24,9 +24,31 @@ const AdminOrders = () => {
     }, []);
 
 
-const toggleStatus = async (orderId, currentStatus) => {
-toast.info( currentStatus );
+const toggleStatus = async (orderId) => {
+  try {
+    const orderRef = ref(db, `orders/${orderId}`); // Reference to the specific order
+
+    // Retrieve the current status
+    const snapshot = await get(orderRef);
+    if (!snapshot.exists()) {
+      console.error(`Order with ID ${orderId} does not exist.`);
+      return;
+    }
+
+    const currentStatus = snapshot.val().status;
+
+    // Toggle the status
+    const newStatus = !currentStatus;
+
+    // Update the status in Firebase
+    await update(orderRef, { status: newStatus });
+
+    console.log(`Order ${orderId} status updated to ${newStatus}`);
+  } catch (error) {
+    console.error("Error updating order status:", error);
+  }
 };
+
 
     return (
         <div className="p-6 bg-gray-100 min-h-screen">

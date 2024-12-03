@@ -12,9 +12,9 @@ const ManageProducts = () => {
     desc: "",
     qty: 1,
     price: [
-      { currency: "USD", value: 0 },
-      { currency: "NGN", value: 0 },
-      { currency: "EUR", value: 0 },
+      { currency: "USD", value: "" },
+      { currency: "NGN", value: "" },
+      { currency: "EUR", value: "" },
     ],
   });
   const [isEditing, setIsEditing] = useState(false);
@@ -98,9 +98,9 @@ const ManageProducts = () => {
       desc: "",
       qty: 1,
       price: [
-        { currency: "USD", value: 0 },
-        { currency: "NGN", value: 0 },
-        { currency: "EUR", value: 0 },
+        { currency: "USD", value: "" },
+        { currency: "NGN", value: "" },
+        { currency: "EUR", value: "" },
       ],
     });
     setIsEditing(false);

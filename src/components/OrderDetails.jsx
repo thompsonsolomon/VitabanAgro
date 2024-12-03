@@ -46,7 +46,7 @@ const OrderDetails = () => {
       <h1 className="text-3xl font-bold text-gray-500 mb-6">Order Details</h1>
       <div className="bg-white p-4 shadow-md rounded-lg">
         <p className="text-LG text-black">
-          <strong>User Name:</strong> {order.Name}{" "}
+          <strong className="text-black" >User Name:</strong> {order.Name}{" "}
           <button
             onClick={() => copyToClipboard(order.Name)}
             className="ml-2 bg-gray px-2 py-1 rounded text-sm"
@@ -55,7 +55,7 @@ const OrderDetails = () => {
           </button>
         </p>
         <p className="text-lg text-black">
-          <strong>Phone Number:</strong> {order.phone}{" "}
+          <strong className=" text-black">Phone Number:</strong> {order.phone}{" "}
           <button
             onClick={() => copyToClipboard(order.phone)}
             className="ml-2 bg-gray px-2 py-1 rounded text-sm"
@@ -64,7 +64,7 @@ const OrderDetails = () => {
           </button>
         </p>
         <p className="text-lg text-black">
-          <strong>Address:</strong> {order.Address}{" "}
+          <strong className="text-black">Address:</strong> {order.Address}{" "}
           <button
             onClick={() => copyToClipboard(order.Address)}
             className="ml-2 bg-gray px-2 py-1 rounded text-sm"

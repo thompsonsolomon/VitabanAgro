@@ -37,15 +37,16 @@ const Product = () => {
 
   const handleSearch = (e) => {
     const keyword = e.target.value.toLowerCase();
-    // const results = AllData.filter((loc) =>
-      const results = product.filter((loc) =>
+    //const results = product.filter((loc) =>
+ const results = AllData.filter((loc) =>
+      
       loc.name.toLowerCase().includes(keyword)
     );
     setSearchTerm(keyword);
     setSearchResults(results);
   };
   const dispatch = useDispatch();
-  const [selectedCurrency, setSelectedCurrency] = useState("USD")
+  const [selectedCurrency, setSelectedCurrency] = useState("ngn")
   const handleChangeCurrency = (e) => {
     setSelectedCurrency(e.target.value)
     dispatch(cartTypeActions.setCartType({ title: e.target.value }));
@@ -83,10 +84,11 @@ focus:ring-2 focus:ring-green-500
 focus:border-green-500 sm:text-sm"
           onChange={handleChangeCurrency}
         >
-          <option value="USD">USD</option>
-          <option value="NGN">NGN</option>
+  <option value="ngn">NGN</option>
+          <option value="usd">USD</option>
+        
           {/* <option value="GBP">GBP</option> */}
-          <option value="EUR">EUR</option>
+          <option value="eur">EUR</option>
         </select>
       </div>
       {
@@ -97,9 +99,9 @@ focus:border-green-500 sm:text-sm"
                 <div>
                   <div className="grid sm:grid-cols-2 bg-white md:grid-cols-3 gap-4 ">
                     {/* {AllData.map((item) => ( */}                    {
-                      // product.map((item) => {
-                      AllData.map((item) => {
-                        const price = item.price.find(price => price.currency === Currency)?.value
+                      //product.map((item) => {
+ AllData.map((item) => {                      
+                        const price = item.price.find(price => price.currency =Currency)?.value
                         return (
                           <ProductCart
                             key={item.id}
@@ -125,7 +127,7 @@ focus:border-green-500 sm:text-sm"
 
                     {
                       searchResults.map((item) => {
-                        const price = item.price.find(price => price.currency === Currency)?.value
+                        const price = item.price.find(price => price.currency = Currency)?.value
                         return (
                           <ProductCart
                             key={item.id}

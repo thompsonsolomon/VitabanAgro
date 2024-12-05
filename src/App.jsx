@@ -28,6 +28,7 @@ import OrdersPage from "./components/Orders";
 import Contact from "./components/Contact/Contact";
 import ManageProducts from "./Hooks/AdminAddProduct";
 import Admin from "./components/Admin";
+import OrderDetails from "./components/OrderDetails";
 
 function App() {
   const cartItems = useSelector((state) => state.cart.itemsList);
@@ -69,6 +70,9 @@ function App() {
           <Route path="/about-us" element={<Aboutus />} />
           <Route path="/home" element={< Home />} />
           <Route path="/products/:id" element={<ProductDetails />} />
+
+          <Route path="/order/:id" element={<OrderDetails />} />
+
           <Route path="/checkout" element={<Payment />} />
           <Route path="/orders" element={currentUser ? <OrdersPage /> : <Signin />} />
           <Route path="/ordercompleted" element={<OrderCompleted />} />

@@ -97,8 +97,8 @@ focus:border-green-500 sm:text-sm"
                 <div>
                   <div className="grid sm:grid-cols-2 bg-white md:grid-cols-3 gap-4 ">
                     {/* {AllData.map((item) => ( */}                    {
-                      // AllData.map((item) => {
-                      product.map((item) => {
+                      // product.map((item) => {
+                      AllData.map((item) => {
                         const price = item.price.find(price => price.currency === Currency)?.value
                         return (
                           <ProductCart

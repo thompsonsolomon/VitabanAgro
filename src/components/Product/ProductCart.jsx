@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { cartActions } from "../../redux/slice";
 import { Link } from "react-router-dom";
+import { FormatCurrency } from "../../assets/data/data";
 // import { AddToCart } from "../../Hooks/HandleAddToCart";
 
 const ProductCart = ({ key, id, name, price, cover }) => {
@@ -20,10 +21,10 @@ const ProductCart = ({ key, id, name, price, cover }) => {
       className="bg-white md:h-auto xd:h-auto p-4 rounded-lg  
         transition-all ease-in-out duration-[1s] shadow-xl"
       id="product"
-      key={key}
+      key={id}
     >
       <div className="sm xd:flex items-top flex-col">
-        <Link to={`/our-products/${id}`}>
+        <Link to={`/products/${id}`}>
           <div className="xd:w-[100%]">
             <img
               className="w-[100%] xxs:object-cover h-[40vh] md:h-[30vh] xd:h-[35vh]"
@@ -37,7 +38,12 @@ const ProductCart = ({ key, id, name, price, cover }) => {
         </Link>
         <div className="text-black text-sm flex flex-col  w-full mt-4">
           <p className="text-xs md:text-base">{name}</p>
-          <p>Amount: {price}</p>
+          <p>Amount:
+            <span>{
+              FormatCurrency(price)
+            }
+            </span>
+              </p>
         </div>
         <div className="w-full mt-4">
           <button

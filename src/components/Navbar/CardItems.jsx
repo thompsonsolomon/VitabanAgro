@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import {   } from "react-toastify";
 import { cartActions } from "../../redux/slice";
+import { FormatCurrency } from "../../assets/data/data";
 
 
 const CardItems = ({
@@ -46,7 +47,7 @@ const CardItems = ({
           <div>
             <p>{name}</p>
             <label className=" text-xs" htmlFor="">
-              Unit Price: {price}
+              Unit Price:{FormatCurrency(price)}
             </label>
           </div>
           <div className="">
@@ -59,7 +60,8 @@ const CardItems = ({
                 <AiOutlineMinus />
               </button>
             </div>
-            <div> Total-item: {Math.round(`${totalPrice}`)}</div>
+            <div> Total-item: {FormatCurrency(totalPrice)}</div>
+            {/* <div> Total-item: {Math.round(`${totalPrice}`)}</div> */}
           </div>
         </div>
       </div>

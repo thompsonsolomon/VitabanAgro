@@ -21,6 +21,8 @@ function AdminContact() {
         return () => unsub();
     }, []);
 
+    console.log(contacts)
+
     const toggleAccordion = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
     };
@@ -44,9 +46,9 @@ function AdminContact() {
                                 onClick={() => toggleAccordion(index)}
                             >
                                 <div className="text-lg font-medium text-gray-800">
-                                    {contact.fullname}
+                                    {contact.Fullname}
                                 </div>
-                                <div className="text-sm text-gray-600">{contact.email}</div>
+                                <div className="text-sm text-gray-600">{contact.Email}</div>
                                 <span className="text-gray-500">
                                     {activeIndex === index ? '▲' : '▼'}
                                 </span>
@@ -56,10 +58,10 @@ function AdminContact() {
                             {activeIndex === index && (
                                 <div className="p-4 border-t bg-gray-50">
                                     <p>
-                                        <strong>Phone:</strong> {contact.phone}
+                                        <strong>Phone:</strong> {contact.Phone}
                                     </p>
                                     <p className="mt-2">
-                                        <strong>Message:</strong> {contact.message}
+                                        <strong>Message:</strong> {contact.Message}
                                     </p>
                                 </div>
                             )}

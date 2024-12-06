@@ -4,6 +4,7 @@ import CardItems from "./CardItems";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useUser } from "../../Context/userContext";
+import { FormatCurrency } from "../../assets/data/data";
 
 const Card = ({ openCard }) => {
 
@@ -90,8 +91,7 @@ const Card = ({ openCard }) => {
                           htmlFor=""
                         >
                           <p className="mr-5">|</p>
-                          {/* <p>${total}</p> */}
-                          <p>{Math.round(`${total}`)}</p>
+                          <p>{FormatCurrency(total)}</p>
                         </label>
                       </div>
                     </div>

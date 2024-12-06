@@ -23,9 +23,7 @@ const Foot = () => {
             <li>
               <a href="#" className="hover:text-green-400">Home</a>
             </li>
-            <li>
-              <a href="#" className="hover:text-green-400">Shop</a>
-            </li>
+           
             <li>
               <a href="#" className="hover:text-green-400">About Us</a>
             </li>

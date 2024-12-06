@@ -30,6 +30,7 @@ export const RevenueOverTime = () => {
     fetchRevenue();
   }, []);
 
+
   const data = {
     labels: Object.keys(revenue),
     datasets: [

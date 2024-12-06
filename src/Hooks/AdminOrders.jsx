@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { collection, query, onSnapshot, doc, updateDoc } from "firebase/firestore";
 import { db } from "../assets/data/firebase";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import { FormatCurrency } from "../assets/data/data";
 const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,6 +22,8 @@ const AdminOrders = () => {
     });
     return () => unsub();
   }, []);
+
+  console.log(orders)
 
   // Toggle order status
   const toggleStatus = async (orderId) => {
@@ -70,7 +74,7 @@ const AdminOrders = () => {
                     Order Date: {order.date}
                   </p>
                   <p className="text-gray-600">
-                    Total Price: {order.currency} {order.totalPrice}
+                    Total Price:{FormatCurrency(order.totalPrice)}
                   </p>
                   <p className="text-gray-600">
                     Status:{" "}
@@ -109,16 +113,23 @@ const AdminOrders = () => {
                         <div>
                           <p className="text-md font-semibold">{item.name}</p>
                           <p className="text-sm text-gray-600">
-                            Quantity: {item.quantity} | Price: {order.currency}{" "}
-                            {item.price}
+                            Quantity: {item.quantity} | Price: {order.Currency}  {FormatCurrency(item.price)}
                           </p>
                           <p className="text-sm text-gray-600">
-                            Total: {order.currency} {item.totalPrice}
+                            Total:{FormatCurrency(item.totalPrice)}
                           </p>
                         </div>
                       </li>
                     ))}
                 </ul>
+              </div>
+
+              <div>                
+                  <Link className="py-2 px-4 mx-3 rounded-md text-white bg-blue-500" to={`/order/${order.id}`}
+                  >View</Link>
+
+{/* <a href={`/order/${order.id}`} className="hover:text-green-400">Contact</a> */}
+
               </div>
             </div>
           ))

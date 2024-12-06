@@ -13,15 +13,6 @@ const OurProduct = () => {
   ];
 
   const [currentImage, setCurrentImage] = useState("");
-
-  // useEffect(() => {
-  //   // Function to pick a random image from the array
-  //   const randomImage = images[Math.floor(Math.random() * images.length)];
-  //   setCurrentImage(randomImage);
-  // }, []); // Run once when the component mounts
-
-
-
   useEffect(() => {
     // Function to pick a random image from the array
     const changeImage = () => {
@@ -45,25 +36,22 @@ const OurProduct = () => {
       <div className="relative   h-[100vh]">
         <div className="absolute inset-0 bg-black bg-opacity-20 z-10"></div>
         <div
-          className="absolute inset-0 bg-contain bg-center z-0"
-          style={{
-            backgroundImage:`url(${Grain})`,
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              backgroundSize:"cover"
-          }}
-        ></div>
-
-        {/* <div
-          className="absolute inset-0 bg-contain bg-center z-0"
-          style={{
-            backgroundImage: `url(${currentImage})`,
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-          }}
-        ></div> */}
-
+        className="absolute inset-0 bg-black  md:block sm:bg-cover bg-center z-0 h-[100vh]"
+        style={{
+          backgroundImage:
+            `url(${Grain})`,
+        }}
+      >
+        <img
+          src={Grain}
+          alt=""
+          width="1000"
+          // height="1500"
+          loading="eager"
+          sizes="100vw"
+          className="  banner__image1 block md:hidden  h-[100vh]"
+        ></img>
+      </div>
         <div className="w-full banner__box absolute right-0 text-black bg-[rgb(245,245,245)] z-20 bottom-0 rounded-tl-[180px] animate animate--step-in animate--loaded text-right ">
           <div className="flex flex-col gap-4">
             <h2 className="text-[2.56rem] leading-tight text-black font-serif font-normal">

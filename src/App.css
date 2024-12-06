@@ -207,6 +207,9 @@
   object-fit: cover;
   width: 100%;
 }
+.banner__image1 {
+  filter: brightness(50%);
+}
 .content-box__buttons {
   display: flex;
   flex-direction: column;

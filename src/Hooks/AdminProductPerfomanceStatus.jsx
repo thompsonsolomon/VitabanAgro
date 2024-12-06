@@ -5,7 +5,7 @@ import {
 } from "chart.js"
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../assets/data/firebase";
-ChartJs.register(ArcElement, Tooltip,Legend,CategoryScale)
+ChartJs.register(ArcElement, Tooltip, Legend, CategoryScale)
 export const ProductPerformance = () => {
   const [productStats, setProductStats] = useState({});
 
@@ -17,11 +17,11 @@ export const ProductPerformance = () => {
 
       const ordersSnapshot = await getDocs(ordersCollection);
       const productsSnapshot = await getDocs(productsCollection);
-
       // Map product IDs to product names
       const productMap = {};
       productsSnapshot.forEach((doc) => {
-        const { id, name } = doc.data(); // Assuming `id` is the product ID and `name` is the product name
+        const id = doc.id
+        const {name} = doc.data(); // Assuming `id` is the product ID and `name` is the product name
         productMap[id] = name;
       });
 
@@ -42,6 +42,7 @@ export const ProductPerformance = () => {
 
     fetchProductPerformance();
   }, []);
+
 
   // Prepare data for Pie chart
   const data = {

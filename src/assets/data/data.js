@@ -266,3 +266,25 @@ export const product = [
 export const truncate = (str, n) => {
   return str?.length > n ? str.substr(0, n - 1) + " . . . . " : str;
 };
+
+
+// export const FormatCurrency = (amount, currency = "USD") => {
+//   return new Intl.NumberFormat("en-US", {
+//     style: "currency",
+//     currency,
+//   }).format(amount);
+// };
+
+// // Example usage
+// // console.log(formatCurrency(1234567)); // $1,234,567.00 
+
+
+export const FormatCurrency = (amount) => {
+  return new Intl.NumberFormat("en-US", {
+    minimumFractionDigits: 2, // Ensures two decimal places
+    maximumFractionDigits: 2,
+  }).format(amount);
+};
+
+// Example usage
+// console.log(formatNumber(1234567)); // 1,234,567.00

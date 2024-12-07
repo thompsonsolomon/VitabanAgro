@@ -258,7 +258,7 @@ export default function Payment() {
   const [Loading, setLoading] = useState(false);
 
   // const publicKey = "pk_test_c475747d64897e53ad10325ad3a8cf138129e9f7"; // Replace with your Paystack public key
-  const publicKey = "pk_live_8fc6c6ef1ec68fde448f2f793234d5406dd97249"; // Replace with your Paystack public key
+  const publicKey = "pk_live_da68c4e84487d3b3cab986075464cbbd2aeaebf4"; // Replace with your Paystack public key
   const handleSuccess = async (reference) => {
     // Save order to Firestore
     const current = new Date();

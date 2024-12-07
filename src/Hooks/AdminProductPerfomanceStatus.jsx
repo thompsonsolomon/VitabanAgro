@@ -59,7 +59,7 @@ export const ProductPerformance = () => {
 
   return (
     <div className="p-4 bg-white shadow-md rounded-md">
-      <h2 className="text-lg font-bold mb-4">Product Performance</h2>
+      <h2 className="text-lg text-gray-700 font-bold mb-4">Product Performance</h2>
       <Pie data={data} options={{ responsive: true }} />
     </div>
   );

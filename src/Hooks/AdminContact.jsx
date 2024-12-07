@@ -56,11 +56,11 @@ function AdminContact() {
 
                             {/* Content */}
                             {activeIndex === index && (
-                                <div className="p-4 border-t bg-gray-50">
+                                <div className="p-4 text-gray-700 border-t bg-gray-50">
                                     <p>
                                         <strong>Phone:</strong> {contact.Phone}
                                     </p>
-                                    <p className="mt-2">
+                                    <p className="Mt-2 text-gray-700 ">
                                         <strong>Message:</strong> {contact.Message}
                                     </p>
                                 </div>

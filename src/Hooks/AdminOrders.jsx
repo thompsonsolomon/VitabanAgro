@@ -97,7 +97,7 @@ const AdminOrders = () => {
                 </button>
               </div>
               <div className="mt-4">
-                <h2 className="text-lg font-bold">Cart Items:</h2>
+                <h2 className="text-LG text-gray-700  font-bold">Cart Items:</h2>
                 <ul className="mt-2">
                   {order.cartItems &&
                     order.cartItems.map((item) => (

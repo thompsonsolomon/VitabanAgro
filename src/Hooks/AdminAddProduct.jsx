@@ -130,7 +130,7 @@ const ManageProducts = () => {
 
       {/* Form */}
       <form onSubmit={handleSubmit} className="bg-white p-6 shadow rounded mb-6">
-        <h2 className="text-xl font-semibold mb-4">{isEditing ? "Edit Product" : "Add New Product"}</h2>
+        <h2 className="text-xl text-gray-700 font-semibold mb-4">{isEditing ? "Edit Product" : "Add New Product"}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
             type="text"
@@ -170,7 +170,7 @@ const ManageProducts = () => {
           />
           {form.price.map((price, index) => (
             <div key={index}>
-              <label className="block text-sm font-medium">
+              <label className="block text-gray-700 text-sm font-medium">
                 {price.currency.toUpperCase()} Price:
               </label>
               <input
@@ -206,7 +206,7 @@ const ManageProducts = () => {
         {products.map((product) => (
           <div key={product.id} className="bg-white p-4 shadow rounded">
             <img src={product.cover} alt={product.name} className="w-full h-48 object-cover rounded" />
-            <h3 className="text-lg font-semibold mt-4">{product.name}</h3>
+            <h3 className="text-lg font-semibold text-gray-700 mt-4">{product.name}</h3>
             <p className="text-gray-600">{product.desc}</p>
             <p className="text-gray-800 mt-2">Qty: {product.qty}</p>
             <div className="mt-4 flex justify-between">

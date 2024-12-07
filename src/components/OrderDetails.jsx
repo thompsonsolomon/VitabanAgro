@@ -75,8 +75,8 @@ const OrderDetails = () => {
             Copy
           </button>
         </p>
-        <p className="text-lg text-grey-500">
-          <strong className="text-grey-600">Address:</strong> {order.Address}{" "}
+        <p className="text-lg text-gray-500">
+          <strong className="text-gray-600">Address:</strong> {order.Address}{" "}
         </p>
 
         <p className="text-red-600">

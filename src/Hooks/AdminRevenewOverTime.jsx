@@ -46,7 +46,7 @@ export const RevenueOverTime = () => {
 
   return (
     <div className="p-4 bg-white shadow-md rounded-md">
-      <h2 className="text-lg font-bold mb-4">Revenue Over Time</h2>
+      <h2 className="text-LG text-gray-700 font-bold mb-4">Revenue Over Time</h2>
       <Line data={data} options={{ responsive: true }} />
     </div>
   );

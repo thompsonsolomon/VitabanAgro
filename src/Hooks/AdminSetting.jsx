@@ -3,6 +3,7 @@ import Signup from '../components/Signup'
 import ForgottenPassword from '../components/ForgottenPassword'
 import { toast } from 'react-toastify'
 import { useUser } from '../Context/userContext';
+import { auth } from "../assets/data/firebase";
 
 function AdminSetting() {
     const { currentUser } = useUser();

@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /admin/
 Disallow: /checkout/
 Disallow: /cart/
-https://vitabanagro.com/sitemap.xml
+Sitemap: https://vitabanagro.com/sitemap.xml 

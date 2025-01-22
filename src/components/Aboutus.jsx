@@ -1,5 +1,5 @@
 import React from "react";
-import { Hero } from "../assets/images";
+import { Hero, Team5 } from "../assets/images";
 import { Team1, Team2, Team3, Team4 } from "../assets/images";
 
 const Aboutus = () => {
@@ -106,18 +106,19 @@ const Aboutus = () => {
                           <small><b className="text-gray-900">Sales Manager</b></small>
                         </div>
                       </div>
-
-                       <div className="teamCard">
+                      <div className="teamCard">
                         <div className="teamImage">
-                          <img src={https://firebasestorage.googleapis.com/v0/b/vitabanagrow.appspot.com/o/files%2FWhatsApp%20Image%202025-01-20%20at%209.51.02%20PM.jpeg?alt=media&token=34ede35b-7f9c-4b5a-a434-76ee89bf64ac} alt="" />
+                          {/* <img src={Team5} alt="" /> */}
+                          <img src={
+                          "https://firebasestorage.googleapis.com/v0/b/vitabanagrow.appspot.com/o/files%2FWhatsApp%20Image%202025-01-20%20at%209.51.02%20PM.jpeg?alt=media&token=34ede35b-7f9c-4b5a-a434-76ee89bf64ac"
+                            } alt="" />
                         </div>
-                       <div className="teamtetcon">
+                        <div className="teamtetcon">
                           <span className="text-gray-900" >Adebayo  Blessing
                           </span> <br />
                           <small><b className="text-gray-900">Sales Representative</b></small>
                         </div>
                       </div>
-                      
                     </div>
                   </div>
                 </div>

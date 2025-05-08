@@ -80,7 +80,7 @@ function ProductDetails() {
                     </div>
 
                     <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div className='flex items-center justify-center absolute top-[65dvh] max-md:top-[70dvh] left-[200px] max-md:left-[100px] transform -translate-x-1/2'>
+                        <div className='flex items-center justify-center absolute top-[65dvh] left-[200px] max-md:left-[100px] transform -translate-x-1/2'>
                             <img src={product.cover || Product10} alt={product.name} className="w-40 h-40 rounded-full shadow-md max-md:w-20 max-md:h-20"/>
                         </div>
                         <div className="flex flex-col mt-[60px] justify-between">

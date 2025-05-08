@@ -52,6 +52,9 @@ const Product = () => {
     dispatch(cartTypeActions.setCartType({ title: e.target.value }));
   }
 
+  console.log(selectedCurrency)
+  console.log(AllData)
+
 
   return (
     <div className="max-w-7xl mx-auto px-4">
@@ -118,7 +121,7 @@ const Product = () => {
 
                 <div>
                   <span className="CartType">{searchResults.length} Product{"(s)"} Found </span>
-                  <div className="grid sm:grid-cols-2 bg-white md:grid-cols-3 gap-4 ">
+                  <div className="grid bg-white grid-cols-2 finalS lg:grid-cols-4 xl:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 gap-4 ">
                     {
                       searchResults.map((item) => {
                         const price = item.price.find(price => price.currency = Currency)?.value

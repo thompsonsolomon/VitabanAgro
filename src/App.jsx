@@ -58,15 +58,12 @@ function App() {
         <Route
           path="/"
           element={<Layout />}
-
         >
           <Route index element={<OurProduct />} />
           <Route path="/about-us" element={<Aboutus />} />
           <Route path="/home" element={< Home />} />
           <Route path="/products/:id" element={<ProductDetails />} />
-
           <Route path="/order/:id" element={<OrderDetails />} />
-
           <Route path="/checkout" element={<Payment />} />
           <Route path="/orders" element={currentUser ? <OrdersPage /> : <Signin />} />
           <Route path="/ordercompleted" element={<OrderCompleted />} />

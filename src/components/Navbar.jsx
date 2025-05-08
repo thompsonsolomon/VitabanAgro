@@ -48,7 +48,10 @@ const Navbar = () => {
         setIsScrolled(true);
       } else if (params.includes("/checkout")) {
         setIsScrolled(true);
-      } else {
+      } else if (params.includes("/products")) {
+      setIsScrolled(true);
+    } 
+    else {
         setIsScrolled(false);
       }
     };
